@@ -12,10 +12,13 @@ public class Threads implements Runnable  {
 		
 		while(this.count < 10 ) {
 			try {
-				System.out.println(this.count + "--------" + Thread.currentThread().getName());
 				
-				Thread.sleep(500);
-				this.count++;
+				synchronized(this) {
+					System.out.println(this.count + "--------" + Thread.currentThread().getName());
+					Thread.sleep(500);
+					this.count++;
+					}
+				
 				} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
